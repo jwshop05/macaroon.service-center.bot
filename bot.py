@@ -4,6 +4,8 @@ import asyncio
 import random
 from discord.ext import commands
 from datetime import datetime
+now = datetime.now()
+print(now)
 
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
