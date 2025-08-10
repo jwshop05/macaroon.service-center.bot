@@ -3,9 +3,9 @@ import os
 import asyncio
 import random
 from discord.ext import commands
-from datetime import datetime
-now = datetime.now()
-print(now)
+from datetime import datetime, timezone
+
+embed.timestamp = datetime.now(timezone.utc)
 
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
