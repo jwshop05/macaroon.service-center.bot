@@ -5,8 +5,6 @@ import random
 from discord.ext import commands
 from datetime import datetime, timezone
 
-embed.timestamp = datetime.now(timezone.utc)
-
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
 async def status_task():
@@ -104,7 +102,7 @@ async def on_message(ctx):
                         await log_channel.send("**[" + user.display_name + "님과의 문의 로그]**\n" + message_string)
                         embed=discord.Embed(title=":x: 관리자가 문의를 종료했습니다.", description="만족스러운 답변이 되셨길 바랍니다.", color=0xff4242)
                         embed.set_footer(text="항상 노력하는 마카롱서버가 되겠습니다.")
-                        embed.timestamp = datetime.datetime.now(datetime.UTC)
+                        embed.timestamp = datetime.now(timezone.utc)
                         await user.send(embed=embed)
                         await ctx.channel.send("* 문의를 종료했습니다.\n* 채널이 5초 뒤 삭제됩니다.")
                         await asyncio.sleep(5)
@@ -112,7 +110,7 @@ async def on_message(ctx):
                     else:
                         embed=discord.Embed(title="관리자의 답변이 도착했습니다!", description="< 내용 >```" + ctx.content + "```", color=0x4258ff)
                         embed.set_footer(text="항상 노력하는 마카롱서버가 되겠습니다.")
-                        embed.timestamp = datetime.datetime.now(datetime.UTC)
+                        embed.timestamp = datetime.now(timezone.utc)
                         try:
                             await user.send("사진: " + ctx.attachments[0].url, embed=embed)
                         except IndexError:
